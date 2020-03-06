@@ -1,4 +1,4 @@
-# go-zmq-jsonrpx
+# go-zmq-jsonrpc
 
 Client\server wrapper of JSON RPC protocol over ZeroMQ for golang
 
