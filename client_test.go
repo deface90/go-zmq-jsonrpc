@@ -39,7 +39,7 @@ func TestClient_Call(t *testing.T) {
     assert.NoError(t, err)
 
     server := &Server{
-        Port: "1234",
+        Port: "1237",
     }
     err = server.Create()
     require.NoError(t, err)
@@ -48,7 +48,7 @@ func TestClient_Call(t *testing.T) {
     go server.Serve()
 
     client := &Client{
-        Port:"1234",
+        Port:"1237",
     }
     err = client.Create()
     require.NoError(t, err)
@@ -75,7 +75,7 @@ func TestClient_String(t *testing.T) {
     assert.NoError(t, err)
 
     server := &Server{
-        Port: "1234",
+        Port: "1238",
     }
     err = server.Create()
     require.NoError(t, err)
@@ -84,7 +84,7 @@ func TestClient_String(t *testing.T) {
     go server.Serve()
 
     client := &Client{
-        Port:"1234",
+        Port:"1238",
     }
     err = client.Create()
     require.NoError(t, err)
@@ -110,7 +110,7 @@ func TestClient_Multi(t *testing.T) {
     assert.NoError(t, err)
 
     server := &Server{
-        Port: "1234",
+        Port: "1239",
     }
     err = server.Create()
     require.NoError(t, err)
@@ -119,7 +119,7 @@ func TestClient_Multi(t *testing.T) {
     go server.Serve()
 
     client := &Client{
-        Port:"1234",
+        Port:"1239",
     }
     err = client.Create()
     require.NoError(t, err)
@@ -134,7 +134,7 @@ func TestClient_Multi(t *testing.T) {
     resp, err := client.Call(req)
     assert.NoError(t, err)
     assert.Equal(t, nil, resp.Error)
-    assert.Equal(t, 6, resp.Result)
+    assert.Equal(t, 6.0, resp.Result)
 
     err = client.Close()
     assert.NoError(t, err)

@@ -51,6 +51,7 @@ func (s *Server) Close() {
     if err != nil {
         log.Printf("[WARNING] Failed to close server zmq socket: %v", err)
     }
+    _ = s.socket.Unbind("tcp://*:" + s.Port)
 }
 
 func (s *Server) Serve() {

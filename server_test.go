@@ -27,14 +27,14 @@ func TestServer_Create(t *testing.T) {
     assert.Error(t, err)
 
     server.Close()
+    serverErr.Close()
 }
 
 func TestServer_ObtainRequest(t *testing.T) {
     var obj Obj
     err := rpc.Register(&obj)
-    assert.NoError(t, err)
 
-    server := &Server{}
+    server := &Server{Port: "1235"}
     err = server.Create()
     assert.NoError(t, err)
 
@@ -63,16 +63,15 @@ func TestServer_ObtainRequest(t *testing.T) {
 func TestServer_Serve(t *testing.T) {
     obj := new(Obj)
     err := rpc.Register(obj)
-    assert.NoError(t, err)
 
-    server := &Server{}
+    server := &Server{Port: "1236"}
     err = server.Create()
     require.NoError(t, err)
     defer server.Close()
 
     go server.Serve()
 
-    socket, err := getZMQSocket("5555", zmq.REQ)
+    socket, err := getZMQSocket("1236", zmq.REQ)
     assert.NoError(t, err)
 
     data := "{\"id\":10, \"method\":\"Obj.Test\", \"params\":[]}"
